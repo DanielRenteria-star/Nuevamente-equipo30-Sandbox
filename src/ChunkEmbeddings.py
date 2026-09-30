@@ -31,4 +31,4 @@ def chunk_embeddings(docs):
 
     vectorstore.save_local("vectorstore")
     
-    
+    return retriever

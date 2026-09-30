@@ -1,0 +1,25 @@
+ Entornos virtuales de Python
+venv/
+.venv/
+env/
+
+# Variables de entorno y secretos (API Keys y credenciales OCI)
+.env
+.env.local
+
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuraciones de editores de código
+.vscode/
+.idea/
+
+# Jupyter Notebooks checkpoints (por si utilizamos notebooks)
+.ipynb_checkpoints/
