@@ -2,18 +2,16 @@ import os
 import sys
 
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_cohere import ChatCohere
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from theKeys import COHERE_API_KEY
 from state import AgentState
-#Agregando el agente
 
 llm = ChatCohere(
-    api_key=COHERE_API_KEY,
-    temperature = 0
+    model =COHERE_API_KEY,
+    temperature= 0.4
 )
 
 Pregunta_usuario = "cuales son los componentes principales para la Arquitectura de Redes VCN en OCI"
@@ -58,3 +56,17 @@ def Redactor_Pedagogico(state:AgentState) -> dict:
     print("✅ [Agente redactor] Redacción completada.")
     
     return {"resultado_prueba": redaccion.content}
+
+
+if __name__ == "__main__":
+    # 1. Crear un estado inicial simulado
+    estado_inicial = {
+        "pregunta": "cuales son los componentes principales para la Arquitectura de Redes VCN en OCI",
+        "perfil": "Técnico",
+        "formato": "Puntos clave"
+    }
+    
+    # 2. Ejecutar el nodo directamente
+    print("--- Ejecutando nodo investigador ---")
+    resultado = Redactor_Pedagogico(estado_inicial)
+    print("Resultado:", resultado)

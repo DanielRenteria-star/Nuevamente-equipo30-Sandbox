@@ -14,11 +14,9 @@ from ChunkEmbeddings import chunk_embeddings
 from ingestion import process_document
 from state import AgentState
 
-#Agregando el agente
-
 llm = ChatCohere(
-    api_key=COHERE_API_KEY,
-    temperature = 0
+    model =COHERE_API_KEY,
+    temperature= 0.4
 )
 
 Pregunta_usuario = "cuales son los componentes principales para la Arquitectura de Redes VCN en OCI"
@@ -67,3 +65,15 @@ def Investigador_RAG(state: AgentState) -> AgentState:
     return { "datos_rag":respuesta}
 
 
+if __name__ == "__main__":
+    # 1. Crear un estado inicial simulado
+    estado_inicial = {
+        "pregunta": "cuales son los componentes principales para la Arquitectura de Redes VCN en OCI",
+        "perfil": "Técnico",
+        "formato": "Puntos clave"
+    }
+    
+    # 2. Ejecutar el nodo directamente
+    print("--- Ejecutando nodo investigador ---")
+    resultado = Investigador_RAG(estado_inicial)
+    print("Resultado:", resultado)
